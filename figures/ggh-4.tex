@@ -1,0 +1,114 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usepackage{import}
+
+\import{../}{parameters.tex}
+
+\begin{document}
+
+\begin{tikzpicture}
+				\centering
+				\def \errorx{0.25}
+				\def \errory{0.095}
+				\def \mi{2}
+				\def \mj{3}
+				\begin{scope}
+								\clip (-1,-0.5) rectangle (4, 3);
+
+								\tkzfundamentalpar{0}{0}{4}{3}{1}{0.2}{0}{0.5}{18}
+
+								\tkzlattice{0}{0}{4}{3}{1}{0.2}{0}{0.5}{5}
+
+								\def \j{3}
+								\def \i{2}
+								\draw[pattern=north west lines, fill opacity=.5]
+												(\offsetx + \i*\ax - 0.5*\ax + \j*\bx - 0.5*\bxt,
+												\offsety + \i*\ay - 0.5*\ay + \j*\by - 0.5*\byt)
+												--
+												(\offsetx + \i*\ax - 0.5*\ax + \j*\bx + 0.5*\bxt,
+												\offsety + \i*\ay - 0.5*\ay + \j*\by + 0.5*\byt)
+												--
+												(\offsetx + \i*\ax + 0.5*\ax + \j*\bx + 0.5*\bxt,
+												\offsety + \i*\ay + 0.5*\ay + \j*\by + 0.5*\byt)
+												--
+												(\offsetx + \i*\ax + 0.5*\ax + \j*\bx - 0.5*\bxt,
+												\offsety + \i*\ay + 0.5*\ay + \j*\by - 0.5*\byt)
+												--
+												cycle;
+
+								% good basis
+								\draw[-stealth,line width=0.5mm,green!70] (0,0) -- (0*\ax + 1*\bx,0*\ay + 1*\by);
+
+								\draw[-stealth,line width=0.5mm,green!70] (0,0) -- (1*\ax + 0*\bx,1*\ay + 0*\by);
+
+								% message
+								\node (message) at (\offsetx + \mi*\ax + \mj*\bx, \offsety + \mi*\ay + \mj*\by) [fill, circle, scale=0.3, purple] {};
+								\node[purple, right = 0.001cm of message] {\tiny $m$};
+
+								% ciphered message
+								\node (ciphertext) at (\offsetx + 2*\ax + 3*\bx - \errorx, \offsety +  2*\ay + 3*\by - \errory) [fill, circle, scale=0.3, blue] {};
+								\node [left = 0.001cm of ciphertext, node distance=0.5cm, blue] {\tiny $c$};
+
+								\node (rect) at (1.5, 1.25) [rectangle, draw=black, minimum width=5cm, minimum height=3.5cm, line width=0.05cm] {};
+				\end{scope}
+
+				\node (rect) at (1.5, -1) [rectangle, draw=black, line width=0.0125cm, minimum width=5cm, minimum height=0.5575cm] {$\sk =$ {\color{green}$\basisB$}};
+
+				\begin{scope}
+								\clip (5,-0.5) rectangle (10, 3);
+
+								\tkzfundamentalpar{6}{0}{4}{3}{1}{2.2}{0}{0.5}{18}
+
+								\tkzlattice{6}{0}{4}{3}{1}{0.2}{0}{0.5}{5}
+
+								\def \ax{1}
+								\def \ay{2.2}
+								\def \bx{0}
+								\def \by{0.5}
+								\begin{scope}
+												\clip (\offsetx-1,\offsety-1) rectangle (\offsetx+\nbx,\offsety+\nby);
+
+												\def \j{-5}
+												\def \i{2}
+												\draw[pattern=north west lines, fill opacity=.5]
+																(\offsetx + \i*\ax - 0.5*\ax + \j*\bx - 0.5*\bxt,
+																\offsety + \i*\ay - 0.5*\ay + \j*\by - 0.5*\byt)
+																--
+																(\offsetx + \i*\ax - 0.5*\ax + \j*\bx + 0.5*\bxt,
+																\offsety + \i*\ay - 0.5*\ay + \j*\by + 0.5*\byt)
+																--
+																(\offsetx + \i*\ax + 0.5*\ax + \j*\bx + 0.5*\bxt,
+																\offsety + \i*\ay + 0.5*\ay + \j*\by + 0.5*\byt)
+																--
+																(\offsetx + \i*\ax + 0.5*\ax + \j*\bx - 0.5*\bxt,
+																\offsety + \i*\ay + 0.5*\ay + \j*\by - 0.5*\byt)
+																--
+																cycle;
+								\end{scope}
+
+								% bad basis
+								\draw[-stealth,line width=0.5mm,red!70] (6,0) -- (\offsetx + \ax, \offsety \ay);
+								\draw[-stealth,line width=0.5mm,red!70] (6,0) -- (\offsetx + \bx, \offsety + \by);
+
+								\def \ax{1}
+								\def \ay{0.2}
+								\def \bx{0}
+								\def \by{0.5}
+
+								% message
+								\node (message) at (\offsetx + \mi*\ax + \mj*\bx, \offsety + \mi*\ay + \mj*\by) [fill, circle, scale=0.3, purple] {};
+								\node[purple, right = 0.001cm of message] {\tiny $m$};
+
+								% ciphered message
+								\node (ciphertext) at (\offsetx + 2*\ax + 3*\bx - \errorx, \offsety +  2*\ay + 3*\by - \errory) [fill, circle, scale=0.3, blue] {};
+								\node [left = 0.001cm of ciphertext, node distance=0.5cm, blue] {\tiny $c$};
+
+								\node (rect) at (7.5, 1.25) [rectangle, draw=black, line width=0.05cm, minimum width=5cm, minimum height=3.5cm] {};
+				\end{scope}
+
+
+				\node (rect2) at (7.5, -1) [rectangle, draw=black, line width=0.0125cm, minimum width=5cm, minimum height=0.5575cm] {$\pk =$ {\color{red}$\basisB'$}, s.t $\LL({\color{red}\basisB'}) = \LL({\color{green}\basisB})$};
+\end{tikzpicture}
+
+\end{document}

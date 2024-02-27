@@ -1,0 +1,297 @@
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+
+\usepackage{
+				amsfonts, amssymb, booktabs, mathtools,
+				microtype, xfrac, multirow, chronosys,
+				amsmath, adjustbox, pdfpages
+}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix,shapes,arrows,positioning, calc, patterns,chains}
+
+\newcommand{\mK}[0]{\ensuremath{\mathcal{K}}}
+\newcommand{\mS}[0]{\ensuremath{\mathcal{S}}}
+\newcommand{\mD}[0]{\ensuremath{\mathcal{D}}}
+\newcommand{\mDs}[0]{\ensuremath{\mD_{s}}}
+\newcommand{\mH}[0]{\ensuremath{\mathcal{H}}}
+\newcommand{\mX}[0]{\ensuremath{\mathcal{X}}}
+\newcommand{\mY}[0]{\ensuremath{\mathcal{Y}}}
+\newcommand{\mU}[0]{\ensuremath{\mathcal{U}}}
+\newcommand{\mE}[0]{\ensuremath{\mathcal{E}}}
+
+\newcommand{\basisBE}[0]{\ensuremath{\mathbb{E}}}
+\newcommand{\EX}[0]{\ensuremath{\mathop{\basisBE}}}
+
+% math sets
+\newcommand{\RM}[0]{\textsc{RM}}
+\newcommand{\BW}[0]{\textsc{BW}}
+\newcommand{\ZZ}[0]{\mathbb{Z}}
+\newcommand{\ZZp}[0]{\ZZ_p}
+\newcommand{\NN}[0]{\mathbb{N}}
+\newcommand{\RR}[0]{\mathbb{R}}
+\newcommand{\FF}[0]{\mathbb{F}}
+\newcommand{\bigO}[0]{\mathcal{O}}
+\newcommand{\littleO}[0]{\textit{o}}
+\newcommand{\bigOt}[0]{\tilde{\bigO}}
+\newcommand{\Aut}[0]{\textit{Aut}}
+\newcommand{\Iso}[0]{\textit{Iso}}
+
+\newcommand{\GL}[0]{\mathsf{GL}}
+\newcommand{\GLnG}[0]{\GL_n(\mathsf{R})}
+\newcommand{\GLnF}[0]{\GL_n(\FF)}
+\newcommand{\GLnZ}[0]{\GL_n(\ZZ)}
+\newcommand{\GLnR}[0]{\GL_n(\RR)}
+
+\newcommand{\GLnQ}{\GL_n(\mathbb{Q})}
+\newcommand{\GLnZp}{\GL_n(\ZZp)}
+
+\newcommand{\OO}[0]{\mathsf{O}}
+
+\newcommand{\OOn}[0]{\OO_{n}}
+
+\newcommand{\UU}[0]{\mathsf{U}}
+\newcommand{\UUn}[0]{\UU_{n}}
+
+\newcommand{\syndrome}[0]{\ensuremath{\mS_{n}^{> \infty}}}
+\newcommand{\mathand}[0]{\ensuremath{\text{~and~}}}
+
+% vectors
+\newcommand{\veco}[0]{\boldsymbol{0}}
+\newcommand{\veca}[0]{\boldsymbol{a}}
+\newcommand{\vecb}[0]{\boldsymbol{b}}
+\newcommand{\vecc}[0]{\boldsymbol{c}}
+\newcommand{\vece}[0]{\boldsymbol{e}}
+\newcommand{\vecg}[0]{\boldsymbol{g}}
+\newcommand{\vecm}[0]{\boldsymbol{m}}
+\newcommand{\vecr}[0]{\boldsymbol{r}}
+\newcommand{\vecs}[0]{\boldsymbol{s}}
+\newcommand{\vecu}[0]{\boldsymbol{u}}
+\newcommand{\vecv}[0]{\boldsymbol{v}}
+\newcommand{\vecx}[0]{\boldsymbol{x}}
+\newcommand{\vecw}[0]{\boldsymbol{w}}
+\newcommand{\vecy}[0]{\boldsymbol{y}}
+\newcommand{\vecz}[0]{\boldsymbol{z}}
+\newcommand{\vect}[0]{\boldsymbol{t}}
+\newcommand{\vecX}[0]{\boldsymbol{X}}
+% lattice
+\newcommand{\In}[0]{\boldsymbol{I}_n}
+\newcommand{\HH}[0]{\boldsymbol{H}}
+\newcommand{\Ball}[0]{\mathcal{B}}
+\newcommand{\basisB}[0]{\boldsymbol{B}}
+\newcommand{\basisH}[0]{\boldsymbol{H}}
+\newcommand{\basisR}[0]{\boldsymbol{R}}
+\newcommand{\setS}[0]{\boldsymbol{S}}
+\newcommand{\LL}[0]{\mathcal{L}}
+\newcommand{\HNF}[0]{\text{HNF}}
+\newcommand{\Gap}[0]{\textbf{Gap}}
+% \newcommand{\span}[0]{\textit{span}}
+\newcommand{\GH}[0]{\textbf{gh}}
+\newcommand{\Ajtai}[0]{\mathcal{H}}
+\newcommand{\Ajtaip}[0]{\Ajtai_{m, n, q, \alpha}}
+
+% lattice problems
+\newcommand{\SVP}[0]{\textbf{SVP}}
+\newcommand{\SIVP}[0]{\textbf{SIVP}}
+\newcommand{\SIVPg}[0]{\SIVP_{\gamma}}
+\newcommand{\BDD}[0]{\textbf{BDD}}
+\newcommand{\LWE}[0]{\textbf{LWE}}
+\newcommand{\SIS}[0]{\textbf{SIS}}
+\newcommand{\SISp}[0]{\SIS_{m, n, q, \beta}}
+\newcommand{\LIP}[0]{\textsc{sLIP}}
+\newcommand{\LIPQ}[0]{\LIP_{Q}}
+\newcommand{\DLIP}[0]{\ensuremath{\Delta\textsc{LIP}}}
+\newcommand{\DSIP}[0]{\ensuremath{\Delta\textsc{SIP}}}
+\newcommand{\DLIPp}[0]{\ensuremath{\DLIP_{Q_1, Q_2}}}
+\newcommand{\acDLIP}[0]{\ensuremath{\text{ac-}\DLIP}}
+\newcommand{\wcDLIP}[0]{\ensuremath{\text{wc-}\DLIP}}
+
+% algorithms
+\newcommand{\KeyGen}[0]{\text{KeyGen}}
+\newcommand{\KeyGenp}[0]{\KeyGen_{\basisB_1, s, m, n, \hat{q}}}
+\newcommand{\Encap}[0]{\text{Encap}}
+\newcommand{\Encapp}[0]{\Encap_{\basisB_1, \rho, m, n, \hat{q}}}
+\newcommand{\Decap}[0]{\text{Decap}}
+\newcommand{\Decapp}[0]{\Decap_{\basisB_1, \rho, m, n, \hat{q}}}
+\newcommand{\Decode}[0]{\textbf{Decode}}
+\DeclareMathOperator*{\poly}{poly}
+\DeclareMathOperator*{\rank}{rank}
+\DeclareMathOperator*{\ari}{ari}
+\DeclareMathOperator*{\gap}{gap}
+\DeclareMathOperator*{\gh}{gh}
+\DeclareMathOperator*{\parity}{par}
+\newcommand{\st}[0]{~|~}
+\newcommand{\meExtractor}[0]{(m, \epsilon)\text{-extractor}}
+\newcommand{\pk}[0]{\text{pk}}
+\newcommand{\sk}[0]{\text{sk}}
+\newcommand{\cc}[0]{\text{c}}
+\newcommand{\ch}[0]{\text{ch}}
+\renewcommand{\ss}[0]{\textit{ss}}
+
+% tikz
+\newcommand{\tkzvector}[5]{\draw[#1] (#2, #3) -- (#4,#5)}
+\newcommand{\tkzpoint}[3]{\node at (#1,#2) [#3] {}}
+\newcommand{\tkzlattice}[9]{
+				\def \offsetx{#1}
+				\def \offsety{#2}
+				\def \nbx{#3}
+				\def \nby{#4}
+				\def \ax{#5}
+				\def \ay{#6}
+				\def \bx{#7}
+				\def \by{#8}
+				\def \itx{#9}
+				\def \ity{#9}
+
+				\begin{scope}[opacity=0.125]
+								% x lines
+								\foreach \i in {-1,...,\nbx} {
+												\tkzvector{line width=0.01mm,gray!30}{\offsetx + \i}{\offsety - 0.5}{\offsetx + \i}{\offsety + \nby};
+								}
+
+								% y lines
+								\foreach \i in {-0.5,...,\nby} {
+												\tkzvector{line width=0.01mm,gray!30}{\offsetx - 1}{\offsety + \i}{\offsetx + \nbx}{\offsety + \i};
+								}
+				\end{scope}
+
+				% x axis
+				\tkzvector{-stealth,line width=0.1mm}{\offsetx - 1}{\offsety + 0}{\offsetx + \nbx+0.2}{\offsety + 0};
+
+				% y axis
+				\tkzvector{-stealth,line width=0.1mm}{\offsetx + 0}{\offsety - 0.5}{\offsetx + 0}{\offsety + \nby+0.2};
+
+				\begin{scope}
+								\clip (\offsetx-1,\offsety-0.5) rectangle (\offsetx+\nbx,\offsety+\nby);
+								\foreach \i in {-18,...,\itx} {
+												\foreach \j in {-18,...,\ity} {
+																\tkzpoint{\offsetx + \i*\ax + \j*\bx}{\offsety + \i*\ay + \j*\by}{fill, circle, scale=0.3};
+												}
+								}
+				\end{scope}
+}
+
+\newcommand{\gramschmidtax}[1]{#1}
+\newcommand{\gramschmidtay}[1]{#1}
+
+\newcommand{\gramprod}[4]{((#3 * #1 + #4 * #2) / (#1 * #1 + #2 * #2))}
+\newcommand{\gramschmidtbx}[4]{(#3 - \gramprod{#1}{#2}{#3}{#4} * #1)}
+\newcommand{\gramschmidtby}[4]{(#4 - \gramprod{#1}{#2}{#3}{#4} * #2)}
+
+\newcommand{\tkzdecodingradiusdefined}[4]{
+				\def \offsetx{#1}
+				\def \offsety{0}
+				\def \nbx{#2}
+				\def \nby{#3}
+				\def \itx{#4}
+				\def \ity{#4}
+
+				\begin{scope}
+								\clip (\offsetx-1,\offsety-0.5) rectangle (\offsetx+\nbx,\offsety+\nby);
+								% vectors
+								\foreach \i in {-\itx,...,\itx} {
+												\foreach \j in {-\ity,...,\ity} {
+																\draw[draw, fill=blue!70, fill opacity=.4] (\offsetx + \i*\ax -  + \j*\bx, \offsety + \i*\ay - + \j*\by) circle [radius= \radius];
+												}
+								}
+
+								\foreach \i in {-\itx,...,\itx} {
+												\foreach \j in {-\ity,...,\ity} {
+																\draw[draw=black, line width=0.05mm] (\offsetx + \i*\ax -  + \j*\bx, \offsety + \i*\ay - + \j*\by) circle [radius= \radius];
+												}
+								}
+				\end{scope}
+}
+
+\newcommand{\tkzdecodingradius}[9]{
+				\def \radius{#2}
+				\def \ax{#5}
+				\def \ay{#6}
+				\def \bx{#7}
+				\def \by{#8}
+
+				\tkzdecodingradiusdefined{#1}{#3}{#4}{#9}
+}
+
+\newcommand{\tkzbabaidecodingregion}[8]{
+				\def \ax{#4}
+				\def \ay{#5}
+				\def \bx{#6}
+				\def \by{#7}
+
+				% Gram-schmidt
+				\pgfmathsetmacro{\bxt}{\gramschmidtbx{\ax}{\ay}{\bx}{\by}}
+				\pgfmathsetmacro{\byt}{\gramschmidtby{\ax}{\ay}{\bx}{\by}}
+				%\show\bxt
+				%\show\byt
+				\pgfmathparse{sqrt(\ax*\ax + \ay*\ay)}
+				\pgfmathsetmacro{\lena}{\pgfmathresult}
+
+				\pgfmathparse{sqrt(\bxt*\bxt + \byt*\byt)}
+				\pgfmathsetmacro{\lenb}{\pgfmathresult)}
+				\pgfmathsetmacro{\radius}{min(\lena, \lenb)/2}
+				% \show\radius
+				\tkzdecodingradiusdefined{#1}{#2}{#3}{#8}
+}
+
+\newcommand{\tkzperfectradius}[8]{
+				\def \ax{#4}
+				\def \ay{#5}
+				\def \bx{#6}
+				\def \by{#7}
+
+				\pgfmathparse{sqrt(\ax*\ax + \ay*\ay)}
+				\pgfmathsetmacro{\lena}{\pgfmathresult}
+
+				\pgfmathparse{sqrt(\bx*\bx + \by*\by)}
+				\pgfmathsetmacro{\lenb}{\pgfmathresult}
+
+				\pgfmathparse{min(\lena,\lenb)/2}
+				\pgfmathsetmacro{\radius}{\pgfmathresult}
+
+				\tkzdecodingradiusdefined{#1}{#2}{#3}{#8}
+}
+
+\newcommand{\tkzfundamentalpar}[9]{
+				\def \offsetx{#1}
+				\def \offsety{#2}
+				\def \nbx{#3}
+				\def \nby{#4}
+				\def \ax{#5}
+				\def \ay{#6}
+				\def \bx{#7}
+				\def \by{#8}
+				\def \itx{#9}
+				\def \ity{#9}
+
+				% Gram-schmidt	
+				\pgfmathsetmacro{\bxt}{\gramschmidtbx{\ax}{\ay}{\bx}{\by}}
+				\pgfmathsetmacro{\byt}{\gramschmidtby{\ax}{\ay}{\bx}{\by}}
+
+				\begin{scope}
+								\clip (\offsetx-1,\offsety-0.5) rectangle (\offsetx+\nbx,\offsety+\nby);
+								% vectors
+								\foreach \i in {-\itx,...,\itx} {
+												\foreach \j in {-\ity,...,\ity} {
+																\draw[fill=gray!20, fill opacity=.5]
+																(\offsetx + \i*\ax - 0.5*\ax + \j*\bx - 0.5*\bxt,
+																\offsety + \i*\ay - 0.5*\ay + \j*\by - 0.5*\byt)
+																--
+																(\offsetx + \i*\ax - 0.5*\ax + \j*\bx + 0.5*\bxt,
+																\offsety + \i*\ay - 0.5*\ay + \j*\by + 0.5*\byt)
+																--
+																(\offsetx + \i*\ax + 0.5*\ax + \j*\bx + 0.5*\bxt,
+																\offsety + \i*\ay + 0.5*\ay + \j*\by + 0.5*\byt)
+																--
+																(\offsetx + \i*\ax + 0.5*\ax + \j*\bx - 0.5*\bxt,
+																\offsety + \i*\ay + 0.5*\ay + \j*\by - 0.5*\byt)
+																--
+																cycle;
+												}
+								}
+				\end{scope}
+}
+
+

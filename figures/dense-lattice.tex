@@ -1,0 +1,72 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usepackage{import}
+
+\import{../}{parameters.tex}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \centering
+  
+		\begin{scope}
+		\clip (-1,-0.5) rectangle (4, 3);
+
+	\tkzperfectradius{0}{4}{3}{0.5}{0}{0.25}{0.43301}{9}
+
+	%\tkzfundamentalpar{0}{0}{4}{3}{0.5}{0}{0.25}{0.43301}{9}
+    
+    \tkzlattice{0}{0}{4}{3}{0.5}{0}{0.25}{0.43301}{8}
+
+    % good basis
+    %\draw[-stealth,line width=0.5mm,green!70] (0,0) -- (0*\ax + 1*\bx,0*\ay + 1*\by);
+
+    %\draw[-stealth,line width=0.5mm,green!70] (0,0) -- (1*\ax + 0*\bx,1*\ay + 0*\by);
+
+    % message
+    %\node at (2*\ax + 3*\bx,2*\ay + 3*\by) [fill, circle, scale=0.3, purple] {};
+
+    %\node[purple, right = 0.001cm] at (\offsetx + 2*\ax + 3*\bx, \offsety + 2*\ay + 3*\by) {\tiny $m$};
+
+    % ciphered message
+    %\node at (\offsetx + 2*\ax + 3*\bx - 0.3, \offsety +  2*\ay + 3*\by - 0.1) [fill, circle, scale=0.3, blue] {};
+
+    %\node[blue, left = 0.001cm] at (\offsetx + 2*\ax + 3*\bx - 0.3, \offsety +  2*\ay + 3*\by - 0.1) {\tiny $c$};
+		
+		\node (rect) at (1.5, 1.25) [rectangle, draw=black, minimum width=5cm, minimum height=3.5cm, line width=0.05cm] {};
+		\end{scope}
+
+		\begin{scope}
+						\clip (5,-0.5) rectangle (10, 3);
+
+	\tkzdecodingradius{6}{0.4}{4}{3}{0.5}{0}{0.25}{0.43301}{9}
+
+	%\tkzfundamentalpar{6}{0}{4}{3}{0.5}{0}{0.25}{0.43301}{9}
+    
+    \tkzlattice{6}{0}{4}{3}{0.5}{0}{0.25}{0.43301}{8}
+
+    % bad basis
+    %\draw[-stealth,line width=0.5mm,green!70] (6,0) -- (\offsetx + \ax, \offsety \ay);
+    %\draw[-stealth,line width=0.5mm,green!70] (6,0) -- (\offsetx + \bx, \offsety + \by);
+
+    \def \ax{1}
+    \def \ay{0}
+    \def \bx{0}
+    \def \by{0.5}
+
+    % message
+    %\node at (\offsetx + 2*\ax + 3*\bx, \offsety + 2*\ay + 3*\by) [fill, circle, scale=0.3, purple] {};
+
+    %\node[purple, right = 0.001cm] at (\offsetx + 2*\ax + 3*\bx, \offsety + 2*\ay + 3*\by) {\tiny $m$};
+
+    % ciphered message
+    %\node at (\offsetx + 2*\ax + 3*\bx - 0.3, \offsety +  2*\ay + 3*\by - 0.1) [fill, circle, scale=0.3, blue] {};
+
+    %\node[blue, left = 0.001cm] at (\offsetx + 2*\ax + 3*\bx - 0.3, \offsety +  2*\ay + 3*\by - 0.1) {\tiny $c$};
+
+	%\node (rect) at (7.5, 1.25) [rectangle, draw=black, line width=0.05cm, minimum width=5cm, minimum height=3.5cm] {};
+	\end{scope}
+\end{tikzpicture}
+
+\end{document}

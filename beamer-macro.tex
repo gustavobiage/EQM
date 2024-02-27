@@ -1,0 +1,47 @@
+\newcommand{\defaultfont}{\fontfamily{roboto}\selectfont}
+
+% \newtheorem{remark}{Remark!}
+\newcommand{\setremarkfontsize}{\scriptsize}
+\newcommand{\setremarkfont}{\defaultfont}
+
+
+\newcommand{\myremark}[1]{%
+	\begin{alertblock}{{\setremarkfont Remark!}}
+		\justify{\setremarkfont\setremarkfontsize #1}
+	\end{alertblock}
+}
+
+\newcommand{\myheuristic}[1]{%
+	\begin{block}{{\setremarkfont Heuristic}}
+		\justify{\setremarkfont\setremarkfontsize #1}
+	\end{block}
+}
+
+\BeforeBeginEnvironment{definition}{\setbeamercolor{block title}{fg=white,bg=studentbrown}\setbeamercolor{block body}{fg=black,bg=studentbrown!20!white}}
+\newcommand{\mydefinition}[2]{%
+	\begin{definition}[{\setremarkfont Heuristic}]
+		\justify{\setremarkfont\setremarkfontsize #1}
+	\end{definition}
+}
+
+\newcommand{\myalgorithm}[2]{%
+	\begin{block}{#1}\scriptsize
+		\begin{enumerate}
+			#2
+		\end{enumerate}
+	\end{block}
+}
+
+% \newenvironment<>{remark}[1][]{%
+%   	\begin{alertblock}{{\setdefinitionfont Remark!}}
+%   		\justify{\setdefinitionfont\setdefinitionfontsize}#2
+% }{%
+%   	\end{alertblock}%
+% }
+
+
+\newcommand{\setdefinitionfontsize}{\scriptsize}
+\newcommand{\setdefinitionfont}{\defaultfont}
+\definecolor{studentbrown}{RGB}{124, 71, 50}
+
+

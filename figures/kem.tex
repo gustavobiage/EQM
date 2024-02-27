@@ -1,0 +1,26 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usepackage{import}
+
+\import{../}{parameters.tex}
+
+\begin{document}
+
+\begin{tikzpicture}
+\matrix (m)[matrix of nodes, column  sep=2cm,row  sep=8mm, nodes={draw=none, anchor=center,text depth=0pt} ]{
+Alice & & Bob\\[-4mm]
+$(\textit{pk}, \textit{sk}) := \textsc{KeyGen}()$ & & \\[-7mm]
+ & Send $\textit{pk}$ & \\
+& & $(\textit{k}, \textit{ch}) := \textsc{Encapsulate}(\textit{pk})$  \\[-7mm]
+ & Send $\textit{ch}$ & \\
+$k := \textsc{Decapsulate}(\textit{sk}, \textit{ch})$ & & \\
+};
+
+\draw[shorten <=-1.5cm,shorten >=-1.5cm] (m-1-1.south east)--(m-1-1.south west);
+\draw[shorten <=-1.5cm,shorten >=-1.5cm] (m-1-3.south east)--(m-1-3.south west);
+\draw[shorten <=-1cm,shorten >=-1cm,-latex] (m-3-2.south west)--(m-3-2.south east);
+\draw[shorten <=-1cm,shorten >=-1cm,-latex] (m-5-2.south east)--(m-5-2.south west);
+\end{tikzpicture}
+
+\end{document}
